@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <header class = "main-header">
+        <h1>Welcome to the Books Page</h1>
+        
+        <% if (role === "admin") { %> 
+            <div>
+                <button id="add-book-btn" class="add-book-btn">Add book</button>
+            </div>
+            <div>
+                <button id="remove-book-btn" class="remove-book-btn">Remove book</button>
+            </div>
+        <% } %>
+        
+    </header>
+    
+    <div id = "add-book-form" class = "add-or-remove-book" style="display: none;">
+        <form action="/add-book" method="post" class="add-book-form">
+            <div class = 'input-group'>
+                <label>Title</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class = 'input-group'>
+                <label>Author</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <div class = 'input-group'>
+                <label>Description</label>
+                <input type="text" id="description" name="description" required>
+            </div>
+            <button type="submit" class="add-book-button">add book</button>
+        </form>
+    </div>
+
+    <div id = "remove-book-form" class = "add-or-remove-book" style="display: none;">
+        <form action="/remove-book" method="post" class="remove-book-form">
+            <div class = 'input-group'>
+                <label>Title</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class = 'input-group'>
+                <label>Author</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <button type="submit" class="remove-book-button">remove book</button>
+        </form>
+    </div>
+
+    <div class="books-container">
+        <% newBook.forEach(book => { %>
+            <div class="book-card">
+                <h3><%= book.title %></h3>
+                <p><strong>Author:</strong> <%= book.author %></p>
+                <p><strong>Description:</strong> <%= book.description %></p>
+                <!-- <p><strong>Status:</strong> <%= book.book_status %></p> -->
+            </div>
+        <% }); %>
+    </div>
+    <script>
+        const addForm = document.getElementById("add-book-form")
+        const removeForm = document.getElementById("remove-book-form")
+
+        document.querySelector("#add-book-btn").onclick = function() {
+            if (addForm.style.display === 'none' || addForm.style.display === '') {
+                addForm.style.display = 'block'
+            } else {
+                addForm.style.display = 'none'
+            }
+        }
+
+        document.querySelector("#remove-book-btn").onclick = function(){
+            if (removeForm.style.display === 'none' || removeForm.style.display === '') {
+                removeForm.style.display = 'block'
+            } else {
+                removeForm.style.display = 'none'
+            }
+        }
+    </script>
+</body>
+</html>

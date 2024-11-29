@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class = 'login-conteiner'> 
+        <h2>Login</h2>
+        <form id = "loginForm" action="/login" method="post">
+            <div class = 'input-group'>
+                <label>Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class = 'input-group'>
+                <label>Password</label>
+                <input type="text" id="password" name="password" required>
+            </div>            
+            <button type="submit" class="login-button">Login</button>
+        </form>
+
+        <a href="/sign-in" id = "sign-in-href">Dont have an account?</a>
+    </div>
+    <script src="/sourse/script.js"></script>
+</body>
+</html>
