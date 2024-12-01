@@ -8,17 +8,14 @@
 </head>
 <body>
     <header class = "main-header">
-        <h1>Welcome to the Books Page</h1>
-        
-        <% if (role === "admin") { %> 
-            <div>
+        <div class="header-content">
+            <% if (role === "admin") { %> 
                 <button id="add-book-btn" class="add-book-btn">Add book</button>
-            </div>
-            <div>
                 <button id="remove-book-btn" class="remove-book-btn">Remove book</button>
-            </div>
-        <% } %>
-        
+            <% } %>
+            <h1>Welcome to the Books Page</h1>
+            <button id="log-out-btn" class="logout-btn" onclick="redirectToLogin()">logout</button>
+        </div>
     </header>
     
     <div id = "add-book-form" class = "add-or-remove-book" style="display: none;">
@@ -64,6 +61,10 @@
         <% }); %>
     </div>
     <script>
+        function redirectToLogin() {
+            window.location.href = '/login'
+        }
+
         const addForm = document.getElementById("add-book-form")
         const removeForm = document.getElementById("remove-book-form")
 

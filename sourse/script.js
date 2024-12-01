@@ -82,6 +82,10 @@ app.post('/login', (req, res) => {
         else {
             console.log(`User with password: ${password} exists`)
 
+            results.forEach(user => {
+                userRole = user.user_role
+            })
+
             res.redirect('/books-page')
         }
     })
