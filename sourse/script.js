@@ -1,6 +1,8 @@
 const express = require('express')
 const mysql = require('mysql2')
 
+require('dotenv').config()
+
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -8,10 +10,10 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false}))
 
 const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "library",
-    password: "077604"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 })
 
 let userRole = ''
@@ -102,10 +104,10 @@ app.get('/books-page', (req, res) => {
         const newBook = results.map(row => ({
             title: row.title,
             author: row.author,
+            status: row.book_status,
             description: row.description
         }))
 
-        // console.log(newBook)
         res.render('books-page', { newBook: newBook, role: userRole})
     })
 })

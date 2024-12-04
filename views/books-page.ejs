@@ -55,20 +55,31 @@
             <div class="book-card">
                 <h3><%= book.title %></h3>
                 <p><strong>Author:</strong> <%= book.author %></p>
+                <% if (book.status === "availeble") { %>
+                    <p style="color: green; font-weight: bold;"><strong>Status:</strong> <%= book.status %></p>
+                <% } else if (book.status === "not available") { %>
+                    <p style="color: red; font-weight: bold;"><strong>Status:</strong> <%= book.status %></p>
+                <% } %>
                 <p><strong>Description:</strong> <%= book.description %></p>
-                <!-- <p><strong>Status:</strong> <%= book.book_status %></p> -->
+                <button class="reed-btn" onclick="reedBook()">reed book</button>
             </div>
         <% }); %>
     </div>
     <script>
-        function redirectToLogin() {
+        const reedBook = () => {
+            const bookCard = document.getElementsByClassName("book-card")
+
+            
+        }
+        
+        const redirectToLogin = () => {
             window.location.href = '/login'
         }
 
         const addForm = document.getElementById("add-book-form")
         const removeForm = document.getElementById("remove-book-form")
 
-        document.querySelector("#add-book-btn").onclick = function() {
+        document.querySelector("#add-book-btn").onclick = () => {
             if (addForm.style.display === 'none' || addForm.style.display === '') {
                 addForm.style.display = 'block'
             } else {
@@ -76,7 +87,7 @@
             }
         }
 
-        document.querySelector("#remove-book-btn").onclick = function(){
+        document.querySelector("#remove-book-btn").onclick = () => {
             if (removeForm.style.display === 'none' || removeForm.style.display === '') {
                 removeForm.style.display = 'block'
             } else {

@@ -8,62 +8,6 @@ body {
     height: 100vh;
 }
 
-.sign-in-conteiner {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-}
-
-.login-conteiner {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555555;
-    font-size: 14px;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #dddddd;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-.input-group input:focus {
-    border-color: #8bc34a;
-    outline: none;
-}
-
-.login-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #8bc34a;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
 .main {
     text-align: center;
     background-color: #ffffff;
@@ -128,16 +72,17 @@ body {
     margin-top: 120px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
     padding: 20px;
-    background-color: #f3f4f6;
 }
 
 .book-card {
+    position: relative;
     background-color: #ffffff;
     padding: 20px;
     width: 220px;
+    height: 250px;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -145,7 +90,7 @@ body {
 }
 
 .book-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -308,4 +253,21 @@ body {
 
 .remove-book-btn:hover {
     background-color: #45a049;
+}
+
+.reed-btn {
+    position: absolute;
+    bottom: 5%;
+    width: 80%;
+    padding: 10px 0;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #4CAF50;
+}
+
+.reed-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
