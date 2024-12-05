@@ -9,11 +9,17 @@
 <body>
     <header class = "main-header">
         <div class="header-content">
-            <% if (role === "admin") { %> 
+            <% if (role === "admin") { %>
                 <button id="add-book-btn" class="add-book-btn">Add book</button>
                 <button id="remove-book-btn" class="remove-book-btn">Remove book</button>
             <% } %>
+            
             <h1>Welcome to the Books Page</h1>
+            <nav class="nav-links">
+                <a href="/home" class="home">Home</a>
+                <a href="/contacts" class="contacts">Contacts</a>
+                <a href="/about" class="about">About</a>
+            </nav>
             <button id="log-out-btn" class="logout-btn" onclick="redirectToLogin()">logout</button>
         </div>
     </header>
@@ -52,7 +58,7 @@
 
     <div class="books-container">
         <% newBook.forEach(book => { %>
-            <div class="book-card">
+            <div class="book-card" data-id="<% book.id %>">
                 <h3><%= book.title %></h3>
                 <p><strong>Author:</strong> <%= book.author %></p>
                 <% if (book.status === "availeble") { %>
@@ -61,17 +67,12 @@
                     <p style="color: red; font-weight: bold;"><strong>Status:</strong> <%= book.status %></p>
                 <% } %>
                 <p><strong>Description:</strong> <%= book.description %></p>
-                <button class="reed-btn" onclick="reedBook()">reed book</button>
+                <button class="read-btn">reed book</button>
             </div>
         <% }); %>
     </div>
-    <script>
-        const reedBook = () => {
-            const bookCard = document.getElementsByClassName("book-card")
 
-            
-        }
-        
+    <script>        
         const redirectToLogin = () => {
             window.location.href = '/login'
         }
@@ -93,6 +94,17 @@
             } else {
                 removeForm.style.display = 'none'
             }
+        }
+
+        document.querySelectorAll('.book-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const bookId = this.getAttribute('data-id');
+                window.location.href = '/book-info';
+            })
+        })
+
+        document.querySelector("#read-btn").onclick = () => {
+            console.log("click")
         }
     </script>
 </body>

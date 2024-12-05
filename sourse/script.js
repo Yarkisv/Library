@@ -47,6 +47,14 @@ app.get('/sign-in', (req, res) => {
     res.render("sign-in-page")
 })
 
+app.get('/home', (req, res) => {
+    res.redirect("books-page")
+})
+
+app.get('/book-info', (req, res) => {
+    res.render("book-info")
+})
+
 app.post('/sign-in', (req, res) => {
     console.log(req.body)
 
@@ -102,6 +110,7 @@ app.get('/books-page', (req, res) => {
         }
     
         const newBook = results.map(row => ({
+            id: row.book_id,
             title: row.title,
             author: row.author,
             status: row.book_status,
