@@ -20,6 +20,7 @@
                 <a href="/contacts" class="contacts">Contacts</a>
                 <a href="/about" class="about">About</a>
             </nav>
+            <button id="basket-btn" class="basket-btn" onclick="addBookToBasket()">basket</button>
             <button id="log-out-btn" class="logout-btn" onclick="redirectToLogin()">logout</button>
         </div>
     </header>
@@ -56,6 +57,10 @@
         </form>
     </div>
 
+    <div class="basket" style="display: none;">
+
+    </div>
+
     <div class="books-container">
         <% newBook.forEach(book => { %>
             <div class="book-card" data-id="<% book.id %>">
@@ -72,16 +77,26 @@
         <% }); %>
     </div>
 
-    <script>        
+    <script>
         const redirectToLogin = () => {
             window.location.href = '/login'
+        }
+
+        document.querySelector("#basket-btn").onclick = () => {
+            const basketEl = document.querySelector(".basket")
+
+            if (basketEl.style.display === "none") {
+                basketEl.style.display = "block"
+            } else {
+                basketEl.style.display = "none"
+            }
         }
 
         const addForm = document.getElementById("add-book-form")
         const removeForm = document.getElementById("remove-book-form")
 
         document.querySelector("#add-book-btn").onclick = () => {
-            if (addForm.style.display === 'none' || addForm.style.display === '') {
+            if (addForm.style.display === 'none') {
                 addForm.style.display = 'block'
             } else {
                 addForm.style.display = 'none'
@@ -89,23 +104,18 @@
         }
 
         document.querySelector("#remove-book-btn").onclick = () => {
-            if (removeForm.style.display === 'none' || removeForm.style.display === '') {
+            if (removeForm.style.display === 'none') {
                 removeForm.style.display = 'block'
             } else {
                 removeForm.style.display = 'none'
             }
         }
 
-        document.querySelectorAll('.book-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const bookId = this.getAttribute('data-id');
-                window.location.href = '/book-info';
+        document.querySelectorAll(".read-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                console.log("click")
             })
         })
-
-        document.querySelector("#read-btn").onclick = () => {
-            console.log("click")
-        }
     </script>
 </body>
 </html>
