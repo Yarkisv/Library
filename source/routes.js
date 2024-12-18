@@ -7,7 +7,8 @@ const {
     addBook,
     removeBook
 } = require('./functions')
-const connection = require('./db_config')
+const User = require('../models/user_model')
+const Book = require('../models/book_model')
 
 let userRole = ''
 
@@ -49,37 +50,27 @@ router.post('/login', (req, res) => {
 
     const { username, password} = req.body
 
-    checkUser(password, res)   
+    checkUser(password, res)
 })
 
 router.post('/sign-in', (req, res) => {
     console.log(req.body)
 
-    const { username, password, role } = req.body
+    const newUser = new User (req.body.username, req.body.password, req.body.role)
 
-    const user = {
-        username: username,
-        password: password,
-        role: role,
-    }
-
-    insertUser(user, res)
+    insertUser(newUser, res)
 })
 
 router.post('/add-book', (req, res) => {
-    const {title, author, description} = req.body
+    console.log(req.body)
 
-    const book = {
-        title,
-        author,
-        description
-    }
+    const newBook = new Book (req.body.title, req.body.author, req.body.bookStatus, req.body.description)
 
-    addBook(book, res)
+    addBook(newBook, res)
 })
 
 router.post('/remove-book', (req, res) => {
-    const {title, author} = req.body
+    const title = req.body
 
     removeBook(title, res)
 })
