@@ -10,7 +10,7 @@ const insertUser = (user, res) => {
             console.error('Database error:', err)
         }
         else {
-            console.log("Inserterd data: \n", user)
+            console.log("Inserterd data:\n", user)
             userRole = user.role
         }
 
@@ -61,9 +61,9 @@ const selectBooks = (res) => {
 }
 
 const addBook = (book, res) => {
-    const query = 'INSERT INTO books (title, author, description) VALUES (?, ?, ?)'
+    const query = 'INSERT INTO books (title, author, book_status, description) VALUES (?, ?, ?, ?)'
 
-    connection.query(query, [book.title, book.author, book.description], (err, responce) => {
+    connection.query(query, [book.title, book.author, book.bookStatus, book.description], (err, responce) => {
         if (err) {
             console.error(err)
         }
